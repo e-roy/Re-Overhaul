@@ -1,0 +1,63 @@
+{
+  "name": "new-project",
+  "author": "Eric Roupe <eric@fullstackeric.com> (http://fullstackeric.com/)",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "vue-cli-service build",
+    "build:dev": "vue-cli-service build --mode development",
+    "build:watch": "vue-cli-service build --mode development --watch --no-clean",
+    "serve": "vue-cli-service serve",
+    "serve:new": "run-s build:dev watch",
+    "serve:firebase": "firebase serve",
+    "watch": "run-p build:watch serve:firebase",
+    "lint": "vue-cli-service lint",
+    "emulators": "firebase emulators:start",
+    "deploy": "firebase deploy",
+    "deploy:hosting": "firebase deploy --only hosting",
+    "deploy:functions": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.2.0",
+    "@heroicons/vue": "^1.0.1",
+    "core-js": "^3.6.5",
+    "element-plus": "^1.0.2-beta.46",
+    "firebase": "^8.6.1",
+    "uuid": "^8.3.2",
+    "vue": "^3.0.11",
+    "vue-router": "4",
+    "vuex": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0-beta.1",
+    "@vue/cli-plugin-eslint": "~5.0.0-beta.1",
+    "@vue/cli-service": "~5.0.0-beta.1",
+    "@vue/compiler-sfc": "^3.0.0",
+    "autoprefixer": "^10.2.5",
+    "eslint": "^7.20.0",
+    "eslint-plugin-vue": "^7.6.0",
+    "postcss": "^8.2.15",
+    "tailwindcss": "^2.1.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
