@@ -16,7 +16,7 @@
         :class="userInputObject"
       >
         <textarea
-          v-model="setTranscript"
+          v-model="setCode"
           class="w-full h-full rounded-lg bg-main placeholder-gray-300 resize-none outline-none p-2"
           rows="10"
           placeholder="Paste Your Code Here"
@@ -32,18 +32,18 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   data: () => ({
-    setTranscript: "",
+    setCode: "",
   }),
   components: {},
   created() {},
   mounted() {},
   methods: {
-    ...mapActions(["setUserTranscript"]),
+    ...mapActions(["setUserCode"]),
   },
   computed: {
-    ...mapGetters(["userTranscript"]),
+    ...mapGetters(["userCode"]),
     userInputObject() {
-      if (this.setTranscript) {
+      if (this.setCode) {
         return "bg-sub text-gray-900";
       } else {
         return "";
@@ -51,8 +51,8 @@ export default {
     },
   },
   watch: {
-    setTranscript() {
-      this.setUserTranscript(this.setTranscript);
+    setCode() {
+      this.setUserCode(this.setCode);
     },
   },
 };

@@ -1,4 +1,9 @@
-import firebase from "firebase/compat/app";
+import { firebase } from "@firebase/app";
+import "firebase/analytics";
+import "firebase/auth";
+import "firebase/functions";
+import "firebase/firestore";
+import "firebase/storage";
 
 // Get a Firestore instance
 

@@ -7,12 +7,6 @@ const positiveDataPrompt = {
   footer:
     "\n###\nNumbered list of single positive sentences in above transcript :\n1.",
 };
-const negativeDataPrompt = {
-  header:
-    "Search the following transcript for negative sentences within the following transcript only.\n###\ntranscript: ",
-  footer:
-    "\n###\nNumbered list of single negative sentences in above transcript :\n1.",
-};
 
 const dataConst = {
   engine: "curie-instruct-beta",
@@ -29,37 +23,22 @@ const dataConst = {
 };
 
 const getGPTdata = async () => {
-  positiveData();
-  negativeData();
+  storeResponse();
 };
 
 export default getGPTdata;
 
-const positiveData = () => {
+const storeResponse = () => {
   let prompt =
     positiveDataPrompt.header +
-    store.getters["userTranscript"] +
+    store.getters["userCode"] +
     positiveDataPrompt.footer;
   let data = { ...dataConst, prompt };
   const GPT3Request = firebase.functions().httpsCallable("GPT3Request");
   GPT3Request(data).then((response) => {
+    console.log(response.data);
     store.dispatch(
-      "setNegativeData",
-      getSentences(response.data.choices[0].text)
-    );
-  });
-};
-
-const negativeData = () => {
-  let prompt =
-    negativeDataPrompt.header +
-    store.getters["userTranscript"] +
-    negativeDataPrompt.footer;
-  let data = { ...dataConst, prompt };
-  const GPT3Request = firebase.functions().httpsCallable("GPT3Request");
-  GPT3Request(data).then((response) => {
-    store.dispatch(
-      "setPositiveData",
+      "setCodeResponse",
       getSentences(response.data.choices[0].text)
     );
   });

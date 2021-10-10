@@ -8,7 +8,7 @@
     <UserExplain />
     <div className="flex my-2 mt-4">
       <button
-        @click="goToResults"
+        @click="testGPT"
         className="py-1 px-4 flex text-gray-800 font-semibold hover:bg-main-light rounded-xl"
       >
         Process Code
@@ -23,6 +23,7 @@ import Logo from "./components/Logo";
 import UserInput from "./components/UserInput";
 import UserExplain from "./components/UserExplain";
 import UserLanguage from "@/components/UserLanguage";
+import getGPTdata from "@/lib/getGPTdata";
 
 export default {
   data: () => ({}),
@@ -30,6 +31,9 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    testGPT() {
+      getGPTdata();
+    },
     goToResults() {
       this.$router.push({ name: "Results" });
     },
