@@ -32,6 +32,7 @@ const extractExplanation = (text) => {
   for (let index = 0; index < stepArr.length; index++) {
     let element = stepArr[index];
     let parts = element.split("+");
+    parts = parts.filter(x => x != "")
     resultArr.push( { code: parts[1].split(":")[1] , explanation: parts[2].split(":")[1] } ) 
   }
   return resultArr;
