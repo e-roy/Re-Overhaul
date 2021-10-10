@@ -72,7 +72,6 @@ export default {
 
   components: {},
   created() {
-    console.log(this.type);
     if (this.type === "original") this.textType = "Input Language";
     if (this.type === "convert") this.textType = "Convert to Another Language";
   },

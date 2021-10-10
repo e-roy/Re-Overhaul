@@ -33,13 +33,12 @@ import UserInput from "./components/UserInput";
 import UserExplain from "./components/UserExplain";
 import UserLanguage from "@/components/UserLanguage";
 // import {getTranslation} from "@/lib/translation";
-import {getExplanation} from "@/lib/explanation";
-
+import { getExplanation } from "@/lib/explanation";
 
 export default {
   data: () => ({}),
   components: { Logo, UserInput, UserLanguage, UserExplain },
-  created() {getExplanation()},
+  created() {},
   mounted() {},
   methods: {
     testGPT() {
@@ -47,6 +46,7 @@ export default {
     },
     goToResults() {
       // getGPTdata();
+      getExplanation();
       this.$router.push({ name: "Results" });
     },
   },

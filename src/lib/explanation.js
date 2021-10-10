@@ -15,33 +15,33 @@ const dataConst = {
   stop: ["*****"],
 };
 
-
-
 const extractExplanation = (text) => {
   //remove explainHeader
-  text = text.replaceAll('/n', '')
-  text = text.replaceAll('\n', '')
-  text = text.replaceAll('/t', '')
-  text = text.replaceAll('/t', '"""')
-  
-  // add 1.step 
+  text = text.replaceAll("/n", "");
+  text = text.replaceAll("\n", "");
+  text = text.replaceAll("/t", "");
+  text = text.replaceAll("/t", '"""');
+
+  // add 1.step
   text = "1.step" + text;
   //
-  const stepArr = text.split("-----")
-  let resultArr= [];
+  const stepArr = text.split("-----");
+  let resultArr = [];
   for (let index = 0; index < stepArr.length; index++) {
     let element = stepArr[index];
     let parts = element.split("+");
-    parts = parts.filter(x => x != "")
-    resultArr.push( { code: parts[1].split(":")[1] , explanation: parts[2].split(":")[1] } ) 
+    parts = parts.filter((x) => x != "");
+    resultArr.push({
+      code: parts[1].split(":")[1],
+      explanation: parts[2].split(":")[1],
+    });
   }
   return resultArr;
-}
+};
 
 export const getExplanation = () => {
-
-  // let prompt = explainHeader + store.getters["userCode"] + explainFooter;
-  let prompt = explainHeader + middle + explainFooter;
+  let prompt = explainHeader + store.getters["userCode"] + explainFooter;
+  // let prompt = explainHeader + middle + explainFooter;
 
   let data = { ...dataConst, prompt };
   const GPT3Request = firebase.functions().httpsCallable("GPT3Request");
@@ -54,38 +54,37 @@ export const getExplanation = () => {
   });
 };
 
+// const middle = `
+// import os
+// import openai
+// import streamlit as st
+// import time
 
-const middle = ` 
-import os 
-import openai
-import streamlit as st
-import time
+// api_key = 'api_key'
+// openai.api_key = api_key
 
-api_key = 'api_key'
-openai.api_key = api_key
+// st.title('GPT-3 Hackathon')
+// st.text('Instructions : \n User: "description of output"\n Code:')
+// text_input =  st.text_area(label='description',height=100)
 
-st.title('GPT-3 Hackathon')
-st.text('Instructions : \n User: "description of output"\n Code:')
-text_input =  st.text_area(label='description',height=100)
-
-prompt_key = ""
-if len(text_input)> 0:
-	response = openai.Completion.create(
-		  engine="davinci",
-		  prompt=prompt_key+text_input,
-		  temperature=0.7,
-		  max_tokens=736,
-		  top_p=1,
-		  frequency_penalty=0,
-		  presence_penalty=0,
-		  stop=["\n", "User:", "Code:"])
-	time.sleep(10)
-	st.text('Super convenient code: ')
-	# st.write(response)
-	st.write(response['choices'][0]['text'])
-else:
-	print('NoInputYet')
-`;
+// prompt_key = ""
+// if len(text_input)> 0:
+// 	response = openai.Completion.create(
+// 		  engine="davinci",
+// 		  prompt=prompt_key+text_input,
+// 		  temperature=0.7,
+// 		  max_tokens=736,
+// 		  top_p=1,
+// 		  frequency_penalty=0,
+// 		  presence_penalty=0,
+// 		  stop=["\n", "User:", "Code:"])
+// 	time.sleep(10)
+// 	st.text('Super convenient code: ')
+// 	# st.write(response)
+// 	st.write(response['choices'][0]['text'])
+// else:
+// 	print('NoInputYet')
+// `;
 
 const explainHeader = ` 
 def findClosestCentroid(clusterPoints, data):
