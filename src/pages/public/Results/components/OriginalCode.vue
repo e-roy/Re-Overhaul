@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   data: () => ({}),
@@ -29,7 +29,12 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    ...mapActions(["setUserCode", "setCodeResponse", "setCodeResponseParsed"]),
+
     goToHome() {
+      this.setUserCode("");
+      this.setCodeResponse([]);
+      this.setCodeResponseParsed([]);
       this.$router.push({ name: "Home" });
     },
   },
