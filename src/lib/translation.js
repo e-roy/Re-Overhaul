@@ -17,12 +17,8 @@ const dataConst = {
 
 
 
-const extractTranslation = (text , prompt) => {
-  //remove prompt
-  text = text.replaceAll('/n', '')
-  text = text.replaceAll('\n', '')
-  text = text.replaceAll('/t', '')
-  text = text.replaceAll('/t', '"""')
+const extractTranslation = (text ) => {
+  //text = text.replaceAll('\n', '')
   return text;
 }
 
@@ -40,15 +36,30 @@ export const getTranslation = () => {
   prompt += " /n "
   prompt += store.getters["convertLang"] + ":"
 
+  // prompt = middle;
+
   let data = { ...dataConst , prompt };
   const GPT3Request = firebase.functions().httpsCallable("GPT3Request");
   GPT3Request(data).then((response) => {
     console.log(response.data);
     store.dispatch(
       "setCodeResponseParsed",
-      extractTranslation(response.data.choices[0].text , prompt)
+      extractTranslation(response.data.choices[0].text)
     );
   });
 };
 
 
+
+
+// const middle = ` 
+// #JavaScript to Python:
+// JavaScript: 
+// dogs = ["bill", "joe", "carl"]
+// car = []
+// dogs.forEach((dog) {
+//     car.push(dog);
+// });
+
+// Python:
+// `;
