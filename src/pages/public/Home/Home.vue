@@ -23,19 +23,21 @@ import Logo from "./components/Logo";
 import UserInput from "./components/UserInput";
 import UserExplain from "./components/UserExplain";
 import UserLanguage from "@/components/UserLanguage";
-import getGPTdata from "@/lib/getGPTdata";
+// import {getTranslation} from "@/lib/translation";
+import {getExplanation} from "@/lib/explanation";
+
 
 export default {
   data: () => ({}),
   components: { Logo, UserInput, UserLanguage, UserExplain },
-  created() {},
+  created() {getExplanation()},
   mounted() {},
   methods: {
     testGPT() {
-      getGPTdata();
+      // getGPTdata();
     },
     goToResults() {
-      getGPTdata();
+      // getGPTdata();
       this.$router.push({ name: "Results" });
     },
   },
