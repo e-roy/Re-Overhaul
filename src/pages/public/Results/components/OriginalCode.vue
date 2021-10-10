@@ -9,16 +9,23 @@
     </button>
   </div>
   <div class="h-3/4 bg-main rounded-lg p-4 text-gray-100">
-    <Loading />
+    <div>
+      <textarea
+        v-model="userCode"
+        class="w-full h-full resize-none outline-none p-2 bg-main placeholder-gray-300"
+        rows="16"
+        :placeholder="userCode"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import Loading from "@/components/Loading";
+import { mapGetters } from "vuex";
 
 export default {
   data: () => ({}),
-  components: { Loading },
+  components: {},
   created() {},
   mounted() {},
   methods: {
@@ -26,7 +33,9 @@ export default {
       this.$router.push({ name: "Home" });
     },
   },
-  computed: {},
+  computed: {
+    ...mapGetters(["userCode"]),
+  },
   watch: {},
 };
 </script>

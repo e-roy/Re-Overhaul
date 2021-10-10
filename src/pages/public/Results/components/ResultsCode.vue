@@ -1,11 +1,19 @@
 <template>
   <div class="mb-4">Tabs</div>
   <div class="h-3/4 bg-main rounded-lg p-4 text-gray-100">
-    <Loading />
+    <div v-if="codeResponse.length === 0">
+      <Loading />
+    </div>
+    <div v-if="codeResponse.length > 0">
+      <div v-for="code in codeResponse" :key="code.id">
+        {{ code }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Loading from "@/components/Loading";
 export default {
   data: () => ({}),
@@ -13,7 +21,9 @@ export default {
   created() {},
   mounted() {},
   methods: {},
-  computed: {},
+  computed: {
+    ...mapGetters(["codeResponse"]),
+  },
   watch: {},
 };
 </script>

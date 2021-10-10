@@ -8,7 +8,7 @@
     <UserExplain />
     <div className="flex my-2 mt-4">
       <button
-        @click="testGPT"
+        @click="goToResults"
         className="py-1 px-4 flex text-gray-800 font-semibold hover:bg-main-light rounded-xl"
       >
         Process Code
@@ -35,10 +35,10 @@ export default {
       getGPTdata();
     },
     goToResults() {
+      getGPTdata();
       this.$router.push({ name: "Results" });
     },
   },
-  computed: {},
   watch: {},
 };
 </script>

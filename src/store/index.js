@@ -6,11 +6,7 @@ export const store = createStore({
     return {
       userCode: "",
       codeResponse: [],
-      userQuestion: "",
-      userTranscript: "",
-      returnData: [],
-      positiveData: [],
-      negativeData: [],
+      codeResponseParsed: [],
     };
   },
 
@@ -21,6 +17,9 @@ export const store = createStore({
     codeResponse(state) {
       return state.codeResponse;
     },
+    codeResponseParsed(state) {
+      return state.codeResponseParsed;
+    },
   },
 
   actions: {
@@ -30,6 +29,9 @@ export const store = createStore({
     setCodeResponse({ commit }, payload) {
       commit("SET_CODE_RESPONSE", payload);
     },
+    setCodeResponseParsed({ commit }, payload) {
+      commit("SET_CODE_RESPONSE_PARSED", payload);
+    },
   },
 
   mutations: {
@@ -38,6 +40,9 @@ export const store = createStore({
     },
     SET_CODE_RESPONSE: (state, payload) => {
       state.codeResponse = payload;
+    },
+    SET_CODE_RESPONSE_PARSED: (state, payload) => {
+      state.codeResponseParsed = payload;
     },
   },
 });
