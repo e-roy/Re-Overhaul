@@ -19,7 +19,10 @@ const dataConst = {
 
 const extractTranslation = (text , prompt) => {
   //remove prompt
-  text = text.replace(prompt , '');
+  text = text.replaceAll('/n', '')
+  text = text.replaceAll('\n', '')
+  text = text.replaceAll('/t', '')
+  text = text.replaceAll('/t', '"""')
   return text;
 }
 
@@ -29,13 +32,13 @@ export const getTranslation = () => {
   
   let prompt = ""
 
-  prompt += store.getters["inputLanguage"] + " to " + store.getters["destinationLanguage"]
+  prompt += store.getters["originalLang"] + " to " + store.getters["convertLang"]
   prompt += " /n "
-  prompt += store.getters["inputLanguage"] + ":"
+  prompt += store.getters["originalLang"] + ":"
   prompt += " /n "
   prompt += store.getters["userCode"] 
   prompt += " /n "
-  prompt += store.getters["destinationLanguage"] + ":"
+  prompt += store.getters["convertLang"] + ":"
 
   let data = { ...dataConst , prompt };
   const GPT3Request = firebase.functions().httpsCallable("GPT3Request");
