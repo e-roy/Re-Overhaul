@@ -7,6 +7,8 @@ export const store = createStore({
       userCode: "",
       codeResponse: [],
       codeResponseParsed: [],
+      originalLang: "",
+      convertLang: "",
     };
   },
 
@@ -20,6 +22,12 @@ export const store = createStore({
     codeResponseParsed(state) {
       return state.codeResponseParsed;
     },
+    originalLang(state) {
+      return state.originalLang;
+    },
+    convertLang(state) {
+      return state.convertLang;
+    },
   },
 
   actions: {
@@ -32,6 +40,12 @@ export const store = createStore({
     setCodeResponseParsed({ commit }, payload) {
       commit("SET_CODE_RESPONSE_PARSED", payload);
     },
+    setOriginalLang({ commit }, payload) {
+      commit("SET_ORIGINAL_LANG", payload);
+    },
+    setConvertLang({ commit }, payload) {
+      commit("SET_CONVERT_LANG", payload);
+    },
   },
 
   mutations: {
@@ -43,6 +57,12 @@ export const store = createStore({
     },
     SET_CODE_RESPONSE_PARSED: (state, payload) => {
       state.codeResponseParsed = payload;
+    },
+    SET_ORIGINAL_LANG: (state, payload) => {
+      state.originalLang = payload;
+    },
+    SET_CONVERT_LANG: (state, payload) => {
+      state.convertLang = payload;
     },
   },
 });

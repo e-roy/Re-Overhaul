@@ -1,6 +1,6 @@
 <template>
   <div class="py-2 font-bold text-gray-700">
-    Convert to another language
+    {{ textType }}
   </div>
   <div>
     <select
@@ -20,9 +20,13 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
+  props: ["type"],
   data: () => ({
     selectLangage: "",
+    typeText: "",
     languages: [
       {
         code: "c",
@@ -59,15 +63,23 @@ export default {
     ],
   }),
   methods: {
+    ...mapActions(["setConvertLang", "setOriginalLang"]),
     changeLanguage() {
-      // this.$store.commit("setLanguage", this.selectLangage);
+      if (this.type === "original") this.setOriginalLang(this.selectLangage);
+      if (this.type === "convert") this.setConvertLang(this.selectLangage);
     },
   },
 
   components: {},
-  created() {},
+  created() {
+    console.log(this.type);
+    if (this.type === "original") this.textType = "Input Language";
+    if (this.type === "convert") this.textType = "Convert to Another Language";
+  },
   mounted() {},
-  computed: {},
+  computed: {
+    ...mapGetters(["convertLang"]),
+  },
   watch: {},
 };
 </script>

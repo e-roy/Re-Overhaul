@@ -6,6 +6,7 @@
       class="mr-16 py-1 px-4 flex text-gray-800 font-semibold hover:bg-main-light rounded-xl"
     >
       Reset
+      <img src="../../images/logo-sm.png" alt="logo" class="w-6 ml-4" />
     </button>
   </div>
   <div class="h-3/4 bg-main rounded-lg p-4 text-gray-100">
@@ -30,7 +31,6 @@ export default {
   mounted() {},
   methods: {
     ...mapActions(["setUserCode", "setCodeResponse", "setCodeResponseParsed"]),
-
     goToHome() {
       this.setUserCode("");
       this.setCodeResponse([]);

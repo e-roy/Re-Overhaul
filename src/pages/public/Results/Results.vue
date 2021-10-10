@@ -5,7 +5,7 @@
         <div class="w-full sm:w-1/2 mr-2 text-gray-700 font-semibold">
           <OriginalCode />
           <div class="my-4">
-            <UserLanguage />
+            <UserLanguage type="convert" />
           </div>
         </div>
         <div class="w-full sm:w-1/2 ml-2 text-gray-700 font-semibold">
