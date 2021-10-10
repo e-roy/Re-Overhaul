@@ -13,8 +13,8 @@
     <div class="uppercase font-semibold text-lg -mt-3 mb-2">
       Original Language : {{ originalLang }}
     </div>
-    <div v-for="line in codeResponseParsed" :key="line.id">
-      <CodeLine :line="line.code" :explain="line.explanation" />
+    <div v-for="(line, index) in codeResponseParsed" :key="index">
+      <CodeLine :line="codeLines[index]" :explain="line.explanation" />
     </div>
     <!-- <textarea
       v-model="userCode"

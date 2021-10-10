@@ -2,7 +2,7 @@
   <div @click="expandLine" class="flex cursor-pointer">
     <textarea
       rows="1"
-      class="w-full h-full resize-none outline-none bg-main placeholder-gray-200"
+      class="w-full h-full resize-none outline-none bg-main placeholder-gray-200 cursor-pointer"
       :placeholder="line"
     />
     <svg

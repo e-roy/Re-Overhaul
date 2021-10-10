@@ -7,11 +7,13 @@
     <div v-if="codeResponseParsed.length === 0">
       <Loading />
     </div>
-    <!-- <div v-if="codeResponseParsed.length > 0">
-      <div v-for="code in codeResponseParsed" :key="code.id">
-        {{ code.explanation }}
-      </div>
-    </div> -->
+    <div class="text-white">
+      <textarea
+        rows="28"
+        class="w-full h-full resize-none outline-none bg-main placeholder-gray-50 font-semibold"
+        :placeholder="codeResponse"
+      />
+    </div>
   </div>
 </template>
 

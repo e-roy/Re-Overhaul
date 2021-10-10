@@ -21,7 +21,7 @@ const extractExplanation = (text) => {
   text = text.replaceAll("\n", "");
   text = text.replaceAll("/t", "");
   text = text.replaceAll("/t", '"""');
-
+  // console.log(text);
   // add 1.step
   text = "1.step" + text;
   //
