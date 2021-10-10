@@ -7,7 +7,7 @@
         2
       </div> -->
       <div class="py-2 font-bold text-gray-700">
-        Paste in your code
+        Explain how you want us to improve the code.
       </div>
     </div>
     <div class="my-2">
@@ -17,9 +17,9 @@
       >
         <textarea
           v-model="setTranscript"
-          class="w-full h-full rounded-lg bg-main placeholder-gray-300 resize-none outline-none p-2"
-          rows="10"
-          placeholder="Paste Your Code Here"
+          class="w-3/4 h-full rounded-lg bg-main placeholder-gray-300 resize-none outline-none p-2"
+          rows="3"
+          placeholder="Explain how you want us to improve the code."
           :class="userInputObject"
         />
       </div>

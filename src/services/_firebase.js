@@ -1,9 +1,4 @@
-import { firebase } from "@firebase/app";
-import "firebase/analytics";
-import "firebase/auth";
-import "firebase/functions";
-import "firebase/firestore";
-import "firebase/storage";
+import firebase from "firebase/compat/app";
 
 // Get a Firestore instance
 
@@ -20,12 +15,3 @@ export const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default firebase;
-
-// emulator settings
-
-if (window.location.hostname === "localhost") {
-  // firebase.auth().useEmulator("localhost", 9099); // not working
-  // firebase.firestore().useEmulator("localhost", 8081);
-  // firebase.functions().useEmulator("localhost", 5001);
-  // firebase.storage().useEmulator("localhost", 9199);
-}

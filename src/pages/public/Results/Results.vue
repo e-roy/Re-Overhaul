@@ -1,22 +1,40 @@
 <template>
-  <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div className="w-3/4 space-y-8 rounded p-4">
-      <Logo />
-      <SummaryResults />
+  <div class="mx-4 my-8 sm:px-8 md:px-12 lg:px-24">
+    <div class="">
+      <div class="sm:flex">
+        <div class="w-full sm:w-1/2 mr-2 text-gray-700 font-semibold">
+          <OriginalCode />
+          <div class="my-4">
+            <UserLanguage />
+          </div>
+        </div>
+        <div class="w-full sm:w-1/2 ml-2 text-gray-700 font-semibold">
+          <ResultsCode />
+          <div class="mx-4 my-6">
+            <AdditionalChanges />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from "./components/Logo";
-import SummaryResults from "./components/SummaryResults";
+import OriginalCode from "./components/OriginalCode.vue";
+import ResultsCode from "./components/ResultsCode.vue";
+import UserLanguage from "@/components/UserLanguage";
+import AdditionalChanges from "./components/AdditionalChanges";
 
 export default {
   data: () => ({}),
-  components: { Logo, SummaryResults },
+  components: { OriginalCode, ResultsCode, UserLanguage, AdditionalChanges },
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    goToHome() {
+      this.$router.push({ name: "Home" });
+    },
+  },
   computed: {},
   watch: {},
 };
